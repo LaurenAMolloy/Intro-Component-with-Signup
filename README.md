@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./images/Screenshot%202024-12-28%20at%2015.55.44.pngscreenshot.jpg)
+![./images/Screenshot%202024-12-28%20at%2015.55.44.pngscreenshot.jpg]
 
 ### Links
 
