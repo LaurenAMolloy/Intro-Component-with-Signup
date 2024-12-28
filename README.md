@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Screenshot
 
-![./images/Screenshot%202024-12-28%20at%2015.55.44.pngscreenshot.jpg]
+![image alt](https://github.com/LaurenAMolloy/Intro-Component-with-Signup/blob/16f1461b60805319b0672c984844779df8747680/intro-component-screenshot.png)
 
 ### Links
 
