@@ -11,7 +11,7 @@ This is a solution to the [Intro component with sign up form challenge on Fronte
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
+ 
   - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
@@ -36,8 +36,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [live site](https://laurenamolloy.github.io/Intro-Component-with-Signup/)
 
 ## My process
 
@@ -54,10 +53,11 @@ Then I started on the JavaScript. I did not want to look at an example or follow
 
 ### What I learned
 
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
-### Continued development
+Whilst building the challenge I learnt the following:
+- How to create an object of inputs in order to select based on id or errorID.
+- How to use the for each loop the access each input and validate accordingly.
+- How to create a special case vaidation for the email input using regex.
+- How to use focus and blur to create a user friendly experience and clear/restore placeholder text.
 
 ### Useful resources
 
@@ -65,11 +65,10 @@ Then I started on the JavaScript. I did not want to look at an example or follow
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Frontend Mentor - [@LaurenAMolloy](https://www.frontendmentor.io/profile/LaurenAMolloy)
 
 
 ## Acknowledgments
-Thanks to Frontend Queens who have created an awesome community for women in tech and my fabulous tutor Sarah Soutoul, who has endless patience and passion for teaching coding.
+Thanks to Frontend Queens who have created an awesome community for women in tech and my fabulous tutor, Sarah Soutoul, who has endless patience and passion for teaching coding.
 
 
