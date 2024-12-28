@@ -59,17 +59,22 @@ freeTrialForm.addEventListener("submit", (e) => {
             else if (!emailRegex.test(field.value.trim())) {
                 showError(field, invalidEmailError, errorIcon);
                 emailErrorMessage.textContent="Looks like this is not an email"
+                field.value ="@example.com";
+                field.style.color = "hsl(0, 100%, 74%)";
                 isValid = false;
             }
             // Valid email
             else {
                 hideError(field, emptyError, errorIcon);
-                hideError(field, invalidEmailError, errorIcon);
+                emailErrorMessage.textContent = "";
+                field.style.color = ""; // Reset text color
+               
             }
         } else {
             // Check if field is empty or uses the default placeholder
             if (field.value.trim() === "" || field.value === field.defaultValue) {
                 showError(field, error, errorIcon);
+                field.value = "";
                 isValid = false;
             } else {
                 hideError(field, error, errorIcon);

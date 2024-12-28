@@ -46,6 +46,7 @@ p {
     margin-bottom: 1rem;
     font-size: 0.875rem;
     opacity: 0.9;
+    font-family: "Poppins", serif;
 }
 
 /* CTA Button */
@@ -120,6 +121,14 @@ input[type="password"] {
     width: 100%;
 }
 
+input::placeholder {
+    font-family: 'Poppins', sans-serif;
+    /* Set the font to Poppins */
+    font-size: 16px;
+    /* Adjust font size to match the form */
+    color: #a8a8a8;
+    /* Choose a color that complements the form's design */
+}
 
 input[type="text"]::placeholder {
     color: #aaa;
@@ -143,6 +152,7 @@ input.error-input {
     /* Error red */
     font-size: 0.75rem;
     margin-top: 0.25rem;
+    font-family: "Poppins", serif;
 }
 
 
