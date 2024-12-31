@@ -47,6 +47,7 @@ p {
     font-size: 0.875rem;
     opacity: 0.9;
     font-family: "Poppins", serif;
+    color: white;
 }
 
 /* CTA Button */
@@ -86,33 +87,36 @@ form {
 
 }
 
-.form-group {
+.form-control {
     position: relative;
     /* For positioning the icon */
 }
 
-.form-group img {
+.form-control img {
     position: absolute;
     right: 10px;
-    /* Adjust distance from the right edge */
     top: 35%;
     transform: translateY(-50%);
     width: 16px;
-    /* Adjust icon size */
     height: 16px;
     pointer-events: none;
-    /* Prevent interaction with the icon */
+    visibility: hidden;
 }
 
-
-.name-inputs {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.form-control.error img {
+    visibility: visible;
 }
 
-input[type="text"],
-input[type="password"] {
+.form-control span {
+    visibility: hidden;
+}
+
+.form-control.error span {
+    color: var(--primary-red);
+    visibility: visible;
+}
+
+.form-control input {
     padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -121,7 +125,7 @@ input[type="password"] {
     width: 100%;
 }
 
-input::placeholder {
+.form-control input::placeholder {
     font-family: 'Poppins', sans-serif;
     /* Set the font to Poppins */
     font-size: 16px;
@@ -130,34 +134,31 @@ input::placeholder {
     /* Choose a color that complements the form's design */
 }
 
-input[type="text"]::placeholder {
-    color: #aaa;
-}
-
-
-input[type="text"]:focus {
+.form-control input:focus {
     outline: none;
-    border-color: #4a3aff;
+    border: 2px solid #4a3aff;
 }
 
-input.error-input {
-    border: 2px solid var(--primary-red);
-    background-color: rgba(240, 205, 205, 0.05);
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+.form-control.success input {
+    transition: border-color 0.3s ease;
+    border: 2px solid var(--primary-green);
+}
 
+.form-control.error input {
+    border: 2px solid hsl(0, 100%, 74%);
+    transition: border-color 0.3s ease;
 }
 
 .error {
-    color: #ff6f61;
-    /* Error red */
-    font-size: 0.75rem;
-    margin-top: 0.25rem;
-    font-family: "Poppins", serif;
+    color: var(--primary-red);
+    font-size: 0.9em;
+    display: block;
+    /* Ensure error messages are visible when not hidden */
 }
-
 
 .hidden {
     display: none;
+    /* Controls whether the error messages are shown */
 }
 
 /* Trial button */

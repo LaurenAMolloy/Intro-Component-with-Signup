@@ -1,98 +1,100 @@
-//Retrive the form
-const freeTrialForm = document.querySelector('[name="freeTrial"]');
-//Retrieve the Inputs
-const inputs = [
-    { id: "first-name", errorId: "firstNameError" },
-    { id: "last-name", errorId: "lastNameError" },
-    { id: "email", errorId: "emailError" },
-    { id: "password", errorId: "passwordError" },
-];
+//Retrieve each element
+const freeTrialForm = document.querySelector('.form');
+const firstName = document.querySelector('[name="first-name"]');
+const lastName = document.querySelector('[name="last-name"]');
+const email = document.querySelector('[name="email"]');
+const password = document.querySelector('[name="password"]');
+const error = document.querySelectorAll(".error");
 
-//function to show errors
-function showError(field, error, errorIcon) {
-    //show error message
-    error.classList.remove("hidden");
-    //add red border to input
-    field.classList.add("error-input");
-    //show error icon
-    errorIcon.classList.remove("hidden");
-}
-
-//function to hide errors
-function hideError(field, error, errorIcon) {
-    //hide error message
-    error.classList.add("hidden");
-    //remove red border from input
-    field.classList.remove("error-input");
-    //hide error icon
-    errorIcon.classList.add("hidden");
-}
-
-//email errors Looks like this is not an email
-
-
-// Event listener on the form
+//event listener on submit
 freeTrialForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevent form from reloading
-    //console.log(e);
-    let isValid = true; // Track form validity
-
-    // Loop over the form elements
-    inputs.forEach(({ id, errorId }) => {
-        const field = document.getElementById(id);
-        const error = document.getElementById(errorId);
-        const inputBox = field.parentElement;
-        const errorIcon = inputBox.querySelector("img");
-
-        // Special handling for email validation 
-        if (id === "email") {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const emailErrorMessage = document.querySelector(".invalidEmailMessage")
-
-            // Check if email is empty
-            if (field.value.trim() === "") {
-                showError(field, emptyError, errorIcon);
-                emailErrorMessage.textContent="This field is required"
-                isValid = false;
-            }
-            // Check if email format is invalid
-            else if (!emailRegex.test(field.value.trim())) {
-                showError(field, invalidEmailError, errorIcon);
-                emailErrorMessage.textContent="Looks like this is not an email"
-                field.value ="@example.com";
-                field.style.color = "hsl(0, 100%, 74%)";
-                isValid = false;
-            }
-            // Valid email
-            else {
-                hideError(field, emptyError, errorIcon);
-                emailErrorMessage.textContent = "";
-                field.style.color = ""; // Reset text color
-               
-            }
-        } else {
-            // Check if field is empty or uses the default placeholder
-            if (field.value.trim() === "" || field.value === field.defaultValue) {
-                showError(field, error, errorIcon);
-                field.value = "";
-                isValid = false;
-            } else {
-                hideError(field, error, errorIcon);
-            }
-        }
-    });
-
-    // If form is valid, display a success message
-    if (isValid) {
-        alert("Form successfully submitted!");
-        // Clear user-entered values only
-        document.querySelectorAll("input").forEach((input) => {
-            if (input.value !== input.defaultValue) {
-                input.value = "";
-            }
-        });
-    }
+    //prevent default
+    e.preventDefault();
+    //custom function to check inputs
+    validateInputs();
 });
+
+//function to validate the form
+function validateInputs() {
+    //get the values from the inputs and store in a variable
+    const firstNameValue = firstName.value.trim();
+    const lastNameValue = lastName.value.trim()
+    const emailValue = email.value.trim();
+    const passwordValue = password.value.trim();
+    
+    //check if first name input is empty
+    if(firstNameValue === '') {
+        //show error
+        //add error class
+        //function to target input
+        setErrorFor(firstName, 'First name cannot be empty');
+    } else {
+        //show success class
+        setSuccessFor(firstName);
+    }
+
+    //check if last name input is empty
+    if(lastNameValue === '') {
+        //show error
+        //add error class
+        //function to target input
+        setErrorFor(lastName, 'Last name cannot be empty');
+    } else {
+        setSuccessFor(lastName);
+    }
+
+    //check if email input is empty
+    if(emailValue === '') {
+        setErrorFor(email, 'Email name cannot be empty');
+    } else if (!isEmail(emailValue)) {
+        setErrorFor(email, 'Email is not valid');
+    } else {
+        setSuccessFor(email);
+    }
+
+    //check if password input is empty
+    if(passwordValue === '') {
+        setErrorFor(password, 'Password cannot be empty');
+    } else {
+        setSuccessFor(password);
+    }
+
+    //Optional check for password conditions length etc
+
+    //Check if form is successful
+    const successInputs = document.querySelectorAll(".form-control.success");
+    const totalInputs = document.querySelectorAll("input").length;
+    if(successInputs.length === totalInputs) {
+        console.log("Form successfully submitted")
+        alert("Form successfully submitted ");
+        //showSuccessMessage();
+    }
+}
+
+//function to set error input and message as parameters
+function setErrorFor(input, message) {
+    //grab the form control div parent of the input
+    const formControl = input.parentElement;
+    //grab the span inside the  
+    const errorSpan = formControl.querySelector("span");
+
+    //add error message inside span
+    errorSpan.textContent = message;
+
+    //add error class
+    formControl.className = "form-control error"
+}
+
+function setSuccessFor(input){
+    const formControl = input.parentElement;
+    formControl.className = "form-control success"
+}
+
+//function to test email using regex
+function isEmail(email) {
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+}
+
 
 // Clear placeholder text on focus
 document.querySelectorAll("input").forEach((input) => {
@@ -112,4 +114,3 @@ document.querySelectorAll("input").forEach((input) => {
 
 
 
-   
